@@ -1,17 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import NavBar from './components/NavBar'
+import Home from './pages/Home';
+import Pokemons from './pages/Pokemons';
+import PokemonDetails from './pages/PokemonDetails';
+import { BrowserRouter , Switch, Route} from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <NavBar/>
+      <div className="container">
+        <Switch>
+          <Route path='/' exact>
+              <Home/>
+          </Route>
+          <Route path='/pokemons' exact>
+              <Pokemons/>
+          </Route>
+          <Route path='/pokemon/:pokemonName' exact>
+              <PokemonDetails/>
+          </Route>
+          
+        </Switch>
+      </div>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
